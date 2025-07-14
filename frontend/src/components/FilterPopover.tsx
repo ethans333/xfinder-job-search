@@ -29,7 +29,7 @@ export default function FilterPopover() {
           <Filter className="w-4 h-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-72 bg-[#162820] border-[2.55px] border-emerald-500/70 text-emerald-500">
+      <PopoverContent className="w-96 lg:w-84 bg-[#162820] border-[2.55px] border-emerald-500/70 text-emerald-500">
         <div className="space-y-5">
           {/* Sort By */}
           <div className="grid w-full max-w-sm gap-3">
