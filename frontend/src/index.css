@@ -136,7 +136,7 @@
 }
 
 .page {
-  @apply flex min-h-svh flex-col items-center pt-5 pb-15 lg:max-w-[1400px] mx-auto px-10 xl:px-5;
+  @apply lg:h-[100vh] flex flex-col items-center pt-5 pb-15 lg:max-w-[1400px] mx-auto px-5 lg:px-10 xl:px-5;
 }
 
 .green-border {

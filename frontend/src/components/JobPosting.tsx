@@ -14,17 +14,21 @@ export default function JobPosting({ job }: { job: JobPostingModel }) {
   return (
     <Sheet>
       <SheetTrigger>
-        <div className="flex flex-col justify-start items-start border-[1.55px] border-emerald-500 rounded-lg w-[425px] h-[225px] px-8 py-8 shadow-md shadow-emerald-500/50 bg-[#162820] cursor-pointer hover:bg-emerald-500/20">
-          <p className="font-bold text-xl text-emerald-500">{job.title}</p>
+        <div className="flex flex-col justify-start items-start border-[1.55px] border-emerald-500 rounded-lg lg:w-[425px] h-[225px] px-8 py-8 shadow-md shadow-emerald-500/50 bg-[#162820] cursor-pointer hover:bg-emerald-500/20">
+          <p className="font-bold text-xl text-emerald-500 max-w-[350px] overflow-hidden text-ellipsis whitespace-nowrap capitalize">
+            {job.title}
+          </p>
           <div className="text-emerald-500 font-semibold">
             <div className="flex gap-x-5 my-2">
               <div className="flex gap-x-2">
                 <BriefcaseBusiness className="w-5 h-5 text-emerald-500" />
-                <p>{job.company}</p>
+                <p className="max-w-[125px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  {job.company}
+                </p>
               </div>
               <div className="flex gap-x-2">
                 <MapPin className="w-5 h-5 text-emerald-500" />
-                <p>{`${job.city}, ${job.state}`}</p>
+                <p className="max-w-[175px] overflow-hidden text-ellipsis whitespace-nowrap">{`${job.city}, ${job.state}`}</p>
               </div>
             </div>
           </div>
@@ -35,13 +39,13 @@ export default function JobPosting({ job }: { job: JobPostingModel }) {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="min-w-[700px] max-w-none bg-[#162820] border-l-[2.55px] border-emerald-500/70"
+        className="min-w-[100vw] lg:min-w-[800px] max-w-none bg-[#162820] border-l-[2.55px] border-emerald-500/70"
       >
         <SheetClose asChild>
           <X className="w-5 h-5 absolute right-8 top-8 cursor-pointer text-emerald-500" />
         </SheetClose>
         <SheetHeader>
-          <SheetTitle className="mx-3 mt-8 text-2xl text-emerald-500">
+          <SheetTitle className="mx-3 mt-8 text-2xl text-emerald-500 capitalize">
             {job.title}
           </SheetTitle>
         </SheetHeader>

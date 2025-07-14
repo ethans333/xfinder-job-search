@@ -19,7 +19,7 @@ import {
 import { useState } from "react";
 
 export default function FilterPopover() {
-  const [sortBy, setSortBy] = useState("bottom");
+  const [sortBy, setSortBy] = useState("most recent");
 
   return (
     <Popover>
