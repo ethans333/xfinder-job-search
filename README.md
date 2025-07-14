@@ -54,6 +54,15 @@ In `/`:
 docker compose up --build
 ```
 
+### Updating Schema Version
+
+Within `/venv`:
+
+```bash
+alembic revision --autogenerate -m "describe your change"
+alembic upgrade head
+```
+
 ## Personal Notes 📝
 
 ### Action Items
@@ -111,3 +120,7 @@ So this supports:
 ### NAT Gateway
 
 Allows resources in a private subnet to access the internet without be accessible from the internet itself.
+
+### Persistent Volumes In K8s
+
+Storage in pods is ephemeral so kubernetes stores data elsewhere is persistent volumes, a piece of storage in a cluster.
