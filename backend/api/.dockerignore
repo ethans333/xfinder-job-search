@@ -1,0 +1,32 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+
+# Environment and secrets
+.env
+*.env
+secrets.json
+
+# Logs
+*.log
+
+# Git
+.git/
+.gitignore
+
+# Docker-related
+Dockerfile
+docker-compose.yml
+
+# OS files
+.DS_Store
+Thumbs.db
