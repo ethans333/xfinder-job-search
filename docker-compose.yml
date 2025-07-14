@@ -9,7 +9,8 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://postgres:password@db:5432/xfinderdb
-      FLASK_ENV: development 
+      FLASK_ENV: development
+      RUN_SEED: true
     volumes:
       - ./backend:/app
 
