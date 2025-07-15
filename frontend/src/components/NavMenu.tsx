@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Radar, Home, Search, Bookmark, Save, User } from "lucide-react";
+import { Radar, Home, Search, Bookmark, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const menuItems = [

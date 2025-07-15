@@ -12,6 +12,8 @@ function Home() {
       import.meta.env.VITE_API_URL
     }/job_posting?page=${page}&per_page=${perPage}`;
 
+    console.log("API URL:", import.meta.env.VITE_API_URL);
+
     const response = await fetch(url);
     const data = await response.json();
     setJobPostings(data["data"] || []);

@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xfinder-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xfinder-api
+  template:
+    metadata:
+      labels:
+        app: xfinder-api
+    spec:
+      containers:
+        - name: xfinder-api
+          image: ethans333/xfinder-api:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: POSTGRES_DATABASE_URL
+            - name: FLASK_ENV
+              value: "production"
+            - name: RUN_SEED
+              value: "true"

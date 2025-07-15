@@ -8,10 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Environment files
-.env
-.env.*
-
 # OS / IDE / version control
 .DS_Store
 Thumbs.db

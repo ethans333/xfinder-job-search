@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xfinder-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xfinder-frontend
+  template:
+    metadata:
+      labels:
+        app: xfinder-frontend
+    spec:
+      containers:
+        - name: xfinder-frontend
+          image: ethans333/xfinder-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: VITE_API_URL
+              value: "http://xfinder-api:5000"

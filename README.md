@@ -1,4 +1,4 @@
-# x finder 🔎
+# X finder 🔎
 
 Web application for experts in industries looking for contract work. Fight the problems of "age-ism".
 
@@ -52,6 +52,20 @@ In `/`:
 
 ```bash
 docker compose up --build
+```
+
+## Run Services In Minikube Cluster
+
+Enter minikube env:
+
+```sh
+minikube start
+eval $(minikube docker-env)
+```
+
+```sh
+./build.sh
+kubectl apply -f ./k8s/ --recursive
 ```
 
 ### Updating Schema Version
@@ -124,3 +138,48 @@ Allows resources in a private subnet to access the internet without be accessibl
 ### Persistent Volumes In K8s
 
 Storage in pods is ephemeral so kubernetes stores data elsewhere is persistent volumes, a piece of storage in a cluster.
+
+### Kubernetes
+
+#### `deployment.yaml`
+
+A deployment defines how to run your containerized app. It configures stuff like:
+
+- Which docker images to use
+- How many replicas to run
+- What environment variables to use
+- What ports to use/expose
+- How to handle restarts and updates
+
+#### `service.yaml`
+
+A service is a persistent endpoint that exposes your pods via a DNS name. This is used for load balancing. Say for instance you needed to spin up multiple replicas of your service/application, this would be the definition of the entry point for all those replicas, the front door.
+
+#### `configmap.yaml`
+
+A config map is used for storing non sensitive key-value pairs.
+
+#### `secrets.yaml`
+
+Secrets is similar to the config map, only the stuff being stored is usually sensitive information, they're more specially stored by kubernetes.
+
+#### `ingress.yaml`
+
+Ingress is used for configuring how you expose your services to the outside world. An ingress controller is required when using this configuration as this is what actually drives the configuration of ingress.
+
+### NGINX
+
+A high performance web server that also functions as a:
+
+- Reverse Proxy
+- Load Balancer
+- HTTP cache
+- Ingress Controller
+
+#### Reverse Proxy
+
+A server that sits in front of your backend services and forwards client requests to the appropriate service.
+
+- Routes multiple services from one domain
+- Hides internal services from the public
+- Distributes traffic across servers
