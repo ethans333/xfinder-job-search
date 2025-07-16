@@ -104,3 +104,31 @@ A server that sits in front of your backend services and forwards client request
 - Routes multiple services from one domain
 - Hides internal services from the public
 - Distributes traffic across servers
+
+### AWS EKS and Terraform
+
+Terraform allows you to describe your architecture in an easy ot read modular template.
+
+Terraform is state based with version control.
+
+#### Worker Groups
+
+A collection of EC2 instances that run your application workloads.
+
+When you deploy your apps as pods to kubernetes they don't run on the control plane but instead on nodes which are part of one or more worker groups.
+
+## Terraform
+
+### Public Subnets
+
+Contain resources that need direct internet access.
+
+### Private Subnets
+
+Contain resources that shouldn't be directly exposed.
+
+### Data Blocks
+
+A data block used to fetch and reference existing infrastructure that is not managed directly within the terraform configuration. Think of it as a local variable who's value is fetched externally from existing infrastructure.
+
+###

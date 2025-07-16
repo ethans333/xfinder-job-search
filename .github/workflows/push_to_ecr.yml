@@ -1,0 +1,57 @@
+name: Build and Push Docker Images to ECR
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: 🐳 Set up Docker layer caching
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
+
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+
+      - name: 🔑 Log in to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: 🛠️ Build and push frontend image
+        run: |
+          FRONTEND_IMAGE="${{ steps.login-ecr.outputs.registry }}/xfinder-frontend:latest"
+          docker build -t $FRONTEND_IMAGE ./frontend
+          docker push $FRONTEND_IMAGE
+
+      - name: 🛠️ Build and push backend image
+        run: |
+          BACKEND_IMAGE="${{ steps.login-ecr.outputs.registry }}/xfinder-backend:latest"
+          docker build -t $BACKEND_IMAGE ./backend
+          docker push $BACKEND_IMAGE
+
+      - name: 📦 Output image URIs
+        run: |
+          echo "Pushed frontend image: ${{ steps.login-ecr.outputs.registry }}/xfinder-frontend:latest"
+          echo "Pushed backend image: ${{ steps.login-ecr.outputs.registry }}/xfinder-backend:latest"
+

@@ -1,0 +1,16 @@
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Crash logs
+crash.log
+
+# Plan output files
+*.tfplan
+
+# .terraform directory (contains local provider binaries, modules, etc.)
+.terraform/
+
+# Override files that contain sensitive data (commonly used locally)
+*.tfvars
+*.tfvars.json
