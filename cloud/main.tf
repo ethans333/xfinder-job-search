@@ -71,6 +71,7 @@ resource "aws_iam_role_policy" "ecr_push_policy" {
 resource "aws_ecr_repository" "xfinder_frontend" {
   name                 = "xfinder-frontend"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   tags = {
     Environment = "dev"
@@ -81,6 +82,7 @@ resource "aws_ecr_repository" "xfinder_frontend" {
 resource "aws_ecr_repository" "xfinder_backend" {
   name                 = "xfinder-backend"
   image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
   tags = {
     Environment = "dev"
@@ -123,12 +125,12 @@ module "eks" {
 
   eks_managed_node_groups = {
     default_node_group = {
-      desired_size = 1
-      max_size     = 1
+      desired_size = 3
+      max_size     = 5
       min_size     = 1
 
-      instance_types = ["t3.micro"]
-      capacity_type  = "SPOT"
+      instance_types = ["t3.medium"]
+      capacity_type  = "ON_DEMAND"
     }
   }
 

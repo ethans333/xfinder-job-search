@@ -1,0 +1,10 @@
+resources:
+  - ../../base
+
+images:
+  - name: ethans333/xfinder-api
+    newName: 349139559030.dkr.ecr.us-east-1.amazonaws.com/xfinder-backend
+    newTag: latest
+  - name: ethans333/xfinder-frontend
+    newName: 349139559030.dkr.ecr.us-east-1.amazonaws.com/xfinder-frontend
+    newTag: latest

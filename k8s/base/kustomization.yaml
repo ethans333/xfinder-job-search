@@ -1,0 +1,9 @@
+resources:
+  - api/deployment.yaml
+  - api/service.yaml
+  - api/ingress.yaml
+  - frontend/deployment.yaml
+  - frontend/service.yaml
+  - frontend/ingress.yaml
+  - postgres/service.yaml
+  - postgres/statefulset.yaml

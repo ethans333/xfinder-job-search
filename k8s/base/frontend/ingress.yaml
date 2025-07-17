@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: xfinder-frontend-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - path: / # Matches everything else
+            pathType: Prefix
+            backend:
+              service:
+                name: xfinder-frontend
+                port:
+                  number: 80

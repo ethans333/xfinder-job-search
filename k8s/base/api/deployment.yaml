@@ -15,7 +15,7 @@ spec:
       containers:
         - name: xfinder-api
           image: ethans333/xfinder-api:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5000
           env:
